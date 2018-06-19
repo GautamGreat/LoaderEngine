@@ -1,5 +1,8 @@
 # LoaderEngine
 An pascal based process patcher, that we call LoaderEngine
+
+
+
       constructor Create(Filename : string; NewProcess : Boolean);   //Create class with filename and a boolean switch for creating new process or open existing process
       function GetProcessInformation : Boolean;  //This function Create a new process or Open a created process
       function SuspendProcessThread : Boolean;  //This function will suspend thread
