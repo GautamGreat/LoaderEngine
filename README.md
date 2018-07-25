@@ -14,3 +14,6 @@ An pascal based process patcher, that we call LoaderEngine
       function WriteTargetProcessMemory(Address : DWORD; Buffer : array of Byte) : Boolean; // this function write memory of desired location
       function ReadTargetProcessMemory(Address : DWORD; Len : Integer; var Buffer) : Boolean; // this function read memory of desired location
       function GetModuleBaseAddress : DWORD; //this function returns base address of process
+      function GetThreadHandle : THandle;  //this function will return handle of thread
+      function GetProcessHandle : THandle; //this function will return handle of process
+      
