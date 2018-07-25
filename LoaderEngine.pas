@@ -36,6 +36,8 @@ type
       function WriteTargetProcessMemory(Address : DWORD; Buffer : array of Byte) : Boolean;
       function ReadTargetProcessMemory(Address : DWORD; Len : Integer; var Buffer) : Boolean;
       function GetModuleBaseAddress : DWORD;
+      function GetThreadHandle : THandle;
+      function GetProcessHandle : THandle;
       destructor Destroy;
   end;
 
@@ -292,11 +294,23 @@ begin
   ReadProcessMemory(hProcess, Pointer(Files.BaseAddress+$8), @Result, 4, bytesread);
 end;
 
+function TLoaderEngine.GetProcessHandle : THandle;
+begin
+  Result := hProcess;
+end;
+
+function TLoaderEngine.GetThreadHandle : THandle;
+begin
+  Result := hThread;
+end;
+
 destructor TLoaderEngine.Destroy;
 begin
   stFilename := '';
   processid := 0;
   threadid := 0;
+  CloseHandle(hThread);
+  CloseHandle(hProcess);
 end;
 
 end.
